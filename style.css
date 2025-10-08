@@ -1,0 +1,26 @@
+h1 {
+	margin-left: 1em;
+}
+
+main {
+	display: flex;
+	border-top: 1px lightgrey solid;
+}
+
+nav {
+	padding: 1em;
+	border-right: 1px lightgrey solid;
+}
+
+header {
+	font-weight: bolder;
+}
+
+.taglist {
+	display: flex;
+	flex-direction: column;
+}
+
+section {
+	padding: 1em;
+}
