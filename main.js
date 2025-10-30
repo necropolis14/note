@@ -1,17 +1,18 @@
-const section = document.querySelector("section");
 const fieldset = document.querySelector("fieldset");
-let currentTag = 1;
+const search = document.querySelector("input");
+const section = document.querySelector("section");
+let currentTag = 0;
 const tags = [
-    {id: 1, name: "Все"},
-    {id: 2, name: "Идеи"},
-    {id: 3, name: "Личное"},
-    {id: 4, name: "Работа"},
-    {id: 5, name: "Список покупок"}
+    {id: 0, name: "Все"},
+    {id: 1, name: "Идеи"},
+    {id: 2, name: "Личное"},
+    {id: 3, name: "Работа"},
+    {id: 4, name: "Список покупок"}
 ];
 const notes = [
-    {id: 1, title: "Сдать отчет", date: "23 Июля 2024", tag: 4},
-    {id: 2, title: "Сдать отчет", date: "23 Июля 2024", tag: 2},
-    {id: 3, title: "Сдать отчет", date: "23 Июля 2024", tag: 2}
+    {id: 1, title: "Сдать отчет", date: new Date().toDateString(), tag: 3},
+    {id: 2, title: "Сдать отчет", date: new Date().toDateString(), tag: 1},
+    {id: 3, title: "Сдать отчет", date: new Date().toDateString(), tag: 1}
 ];
 
 function genTag(tagObj) {
@@ -21,9 +22,10 @@ function genTag(tagObj) {
 
     tagRadio.type = "radio";
     tagRadio.name = "tag";
-    if (tagObj.id === 1) tagRadio.checked = true;
+    if (tagObj.id === 0) tagRadio.checked = true;
     tagRadio.addEventListener("click", () => {
         currentTag = tagObj.id;
+        renderNotes();
     });
     tagLabel.textContent = tagObj.name;
 
@@ -41,7 +43,8 @@ function genNote(noteObj) {
 
     noteHeader.textContent = noteObj.title;
     noteDate.textContent = noteObj.date;
-    noteTag.textContent = noteObj.tag;
+    const tagObj = tags.find(tagObj => tagObj.id === noteObj.tag);
+    noteTag.textContent = tagObj.name;
 
     note.appendChild(noteHeader);
     noteDiv.appendChild(noteDate);
@@ -58,15 +61,24 @@ function renderTags() {
 }
 
 function renderNotes() {
-    for (const note of notes) {
-        const noteHTML = genNote(note);
-        section.appendChild(noteHTML);
+    section.innerHTML = '';
+    let notesFiltered = notes;
+    if (currentTag !== 0) {
+        notesFiltered = notes.filter(note => note.tag === currentTag);
+    }
+    if (search.value?.length > 0) {
+        notesFiltered = notesFiltered.filter(note => note.title.includes(search.value));
+    }
+    for (const note of notesFiltered) {
+        const tagHTML = genNote(note);
+        section.appendChild(tagHTML);
     }
 }
 
 function main() {
     renderTags();
     renderNotes();
+    search.addEventListener("keyup", renderNotes);
 }
 
 main();
