@@ -1,23 +1,44 @@
 <!doctype html>
 <html>
-	<head>
-		<link href="style.css" rel="stylesheet">
-		<script defer src="main.js"></script>
-	</head>
-	<body>
-		<h1>Мои заметки</h1>
-		<main>
-			<nav>
-				<search>
-					<input type="search" placeholder="Поиск">
-				</search>
-				<button>Новая заметка</button>
-				<fieldset>
-					<legend>Теги</legend>
-				</fieldset>
-			</nav>
-			<section>
-			</section>
-		</main>
-	</body>
+  <head>
+    <link href="style.css" rel="stylesheet">
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <h1>Мои заметки</h1>
+    <main>
+      <nav>
+        <search>
+          <input type="search" placeholder="Поиск" id=search>
+        </search>
+        <button id=createButton>Новая заметка</button>
+        <fieldset>
+          <legend>Теги</legend>
+        </fieldset>
+      </nav>
+      <section>
+      </section>
+    </main>
+    <dialog id=createDialog>
+      <form>
+	<input placeholder="Название заметки">
+	<div><label>Тег: </label><select></select></div>
+	<div>
+	  <button>Создать</button>
+	  <button>Отмена</button>
+	</div>
+      </form>
+    </dialog>
+    <dialog id=editDialog>
+      <form>
+	<input placeholder="Название заметки">
+	<div><label>Тег: </label><select></select></div>
+	<div>
+	  <button>Сохранить</button>
+	  <button>Удалить</button>
+	  <button>Отмена</button>
+	</div>
+      </form>
+    </dialog>
+  </body>
 </html>
