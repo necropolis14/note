@@ -2,7 +2,7 @@ const search = document.querySelector("#search");
 const fieldset = document.querySelector("fieldset");
 const section = document.querySelector("section");
 const createButton = document.querySelector("#createButton");
-const createDialog = document.querySelector("#createDialog")
+const createDialog = document.querySelector("#createDialog");
 const editDialog = document.querySelector("#editDialog");
 let currentTag = 0;
 

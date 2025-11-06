@@ -10,11 +10,11 @@ h1 {
 
 main {
   display: flex;
-  border-top: 1px gray solid;
+  border-top: 1px solid gray;
 }
 
 nav {
-  border-right: 1px gray solid;
+  border-right: 1px solid gray;
 }
 
 fieldset {
@@ -32,7 +32,7 @@ section {
 
 section > div {
   padding: 1em;
-  border: 1px gray solid
+  border: 1px solid gray;
 }
 
 section > div > div {
@@ -45,6 +45,10 @@ nav, section {
   flex-direction: column;
   padding: 1em;
   gap: 1em;
+}
+
+dialog {
+  border: 1px solid gray;
 }
 
 form {
